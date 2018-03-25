@@ -24,8 +24,14 @@ int main(void)
 	
 	while (1)
 	{
-		USART_putstring("Hello");
-		_delay_ms(1000);
+		if (USART_receive() == '1')
+		{
+			for (int i = 0; i < 256; i++ )
+			{
+				USART_send((unsigned char)i);
+				_delay_ms(500);
+			}
+		}
 	}
 }
 
